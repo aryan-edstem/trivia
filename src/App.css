@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+button{
+  background-color: aqua;
+}
+
+.selected{
+  background-color: red;
+}
+.correct{
+  background-color: green
+}
