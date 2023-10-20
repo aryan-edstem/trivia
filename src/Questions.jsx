@@ -14,7 +14,9 @@ const Questions = () => {
   useEffect (()=> {
     handleViewClick();
   },[]);
+
   const [resultStatus, setResultStatus] = useState(false);
+  
   const handleViewClick = async () => {
           try {
             const response = await fetch(`https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple`);
