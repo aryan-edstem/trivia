@@ -1,10 +1,9 @@
 import React from "react";
-import data from './data'
 import { useState } from "react";
 import Questions from "./Questions";
 
 const Results = (props) => {
-    const {score}=props;
+    const {score,data}=props;
     const [again, setAgain] = useState(false)
     const handleAgain = () => {
         setAgain(true);

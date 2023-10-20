@@ -4,11 +4,12 @@ import data from "./data";
 import Results from "./Results";
 
 const Questions = () => {
-  const [questions,setQuestions]=useState();
+  const [questions,setQuestions]=useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [color,setColor]=useState('');
   const [qcount, setqcount] = useState(0);
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(0);
+  const [buttonList, setButtonList] = useState([])
 
   useEffect (()=> {
     handleViewClick();
@@ -36,7 +37,8 @@ const Questions = () => {
 
   const handleCheck = (e) =>{
     setSelectedAnswer(e.currentTarget.value);
-    if(e.currentTarget.value===data[qcount].correct_answer){
+    console.log(e.currentTarget.value)
+    if(e.currentTarget.value===questions[qcount].correct_answer){
       console.log(true)
       setColor("correct")
       setScore(score+1)
@@ -47,12 +49,14 @@ const Questions = () => {
 
     if(resultStatus){
       return(
-    <Results score={score}/>
+    <Results score={score} data={questions}/>
       )
     }
-    return (
-      <div>
-            <h1>{questions.length && questions[qcount].question}</h1>
+
+    if(questions){
+            return(
+            <div>
+            <h1>{qcount+1}. {questions[qcount].question}</h1>
             <button onClick={handleCheck} className={`${selectedAnswer === questions[qcount].incorrect_answers[0] ? "selected" : ''} `}  value={questions[qcount].incorrect_answers[0]}>{questions.length && questions[qcount].incorrect_answers[0]}</button>
             <button onClick={handleCheck} className={`${selectedAnswer === questions[qcount].incorrect_answers[1] ? "selected" : ''} `} value={questions[qcount].incorrect_answers[1]}>{questions.length && questions[qcount].incorrect_answers[1]}</button>
             <button onClick={handleCheck} className={color} value={questions[qcount].correct_answer}>{questions.length && questions[qcount].correct_answer}</button>
@@ -60,8 +64,9 @@ const Questions = () => {
               <div>
                 <button onClick={handleNext}> Next question</button>
               </div>
-      </div>
-    )
+            </div>
+            )
+            }
 }
 
 export default Questions
