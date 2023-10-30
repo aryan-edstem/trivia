@@ -1,20 +1,39 @@
 body{
-  background-color: grey;
+  background: #9F7FFF;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
 }
 .App {
   text-align: center;
+  margin-top: 50px;
+  padding: 40px;
+  border-radius: 15px;
+  width: auto;
+  background-color: antiquewhite;
+}
+
+.quiz,.results{
+  display: flex;
+  flex-direction: column;
+  gap:20px
+}
+
+p{
+  font-size: medium;
+  color: white;
 }
 
 button{
   background-color: rgb(21, 72, 166);
   border: 2px solid lightblue;
-  border-radius: 5px;
-  margin-left: 10px;
-  color:black;
-  padding: 10px;
+  border-radius: 25px;
+  margin-left: 40px;
+  padding: 5px 20px;
 }
 
-.selected{
+.incorrect{
   background-color: red;
 }
 .correct{
@@ -22,6 +41,6 @@ button{
 }
 
 .next{
-  background-color: yellowgreen;
+  background-color: blueviolet;
   margin-top: 20px;
 }
