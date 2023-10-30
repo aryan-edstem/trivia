@@ -38,6 +38,10 @@ const Home = () => {
                 <option value="9" selected>General Knowledge</option>
                 <option value="28" >Vehicles</option>
                 <option value="27">Animals</option>
+                <option value="26" >Celebrities</option>
+                <option value="25">Art</option>
+                <option value="24" >Politics</option>
+                <option value="23">History</option>
             </select>
             </label><br /> <br />
             <button onClick={handleStart}><p>Let's Start</p></button>
