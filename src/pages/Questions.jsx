@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import Results from "./Results";
 
-const Questions = () => {
+const Questions = (props) => {
+  const {level}=props;
   const [questions,setQuestions]=useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [qcount, setqcount] = useState(0);
   const [score, setScore] = useState(0);
+
 
 
   useEffect (()=> {
@@ -17,7 +19,7 @@ const Questions = () => {
   
   const handleViewClick = async () => {
           try {
-            const response = await fetch(`https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple`);
+            const response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple&difficulty=${level}`);
             const fetchedData = await response.json();
             setQuestions(fetchedData.results);
             console.log(fetchedData.results)
@@ -50,7 +52,9 @@ const Questions = () => {
     if(questions){
             return(
             <div className="quiz">
+            <h3>Score:{score}</h3>
             <h1>{questions[qcount].category}</h1>
+            <h1>{questions[qcount].difficulty}</h1>
             <div className="question"><h3>{qcount+1}. {questions[qcount].question}</h3></div>
             <div className="options">
 

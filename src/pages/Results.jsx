@@ -3,14 +3,20 @@ import { useState } from "react";
 import Questions from "./Questions";
 
 const Results = (props) => {
-    const {score}=props;
+    const {score,level}=props;
+    const [difficulty, setDifficulty] = useState(level)
     const [again, setAgain] = useState(false)
+
     const handleAgain = () => {
         setAgain(true);
     }
+
     if(again){
-        return(
-    <Questions />)}
+        return( 
+        <Questions level={difficulty}/>
+        )
+        }
+
     return(
         <div className="results">
             <h3>Total No.of Questions: 10</h3>

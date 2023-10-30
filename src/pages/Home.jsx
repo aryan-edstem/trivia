@@ -8,7 +8,7 @@ const Home = () => {
         setIsStarted(true)
     }
     if(isStarted){
-        return <Questions />
+        return <Questions level="easy"/>
             
     }
     return(
