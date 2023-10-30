@@ -45,7 +45,7 @@ const Questions = (props) => {
 
     if(resultStatus){
       return(
-    <Results score={score}/>
+    <Results score={score} level={level}/>
       )
     }
 
@@ -53,8 +53,8 @@ const Questions = (props) => {
             return(
             <div className="quiz">
             <h3>Score:{score}</h3>
-            <h1>{questions[qcount].category}</h1>
-            <h1>{questions[qcount].difficulty}</h1>
+            <h1>Category: {questions[qcount].category}</h1>
+            <h1>Difficulty Level: {questions[qcount].difficulty}</h1>
             <div className="question"><h3>{qcount+1}. {questions[qcount].question}</h3></div>
             <div className="options">
 
