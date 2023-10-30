@@ -7,7 +7,7 @@ body{
 }
 .App {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 40px;
   padding: 40px;
   border-radius: 15px;
   width: auto;
@@ -17,7 +17,8 @@ body{
 .quiz,.results{
   display: flex;
   flex-direction: column;
-  gap:20px
+  gap:20px;
+  align-items: center;
 }
 
 p{
@@ -43,4 +44,12 @@ button{
 .next{
   background-color: blueviolet;
   margin-top: 20px;
+}
+
+.difficulty{
+  background-color: greenyellow;
+  padding: 5px;
+  border-radius: 25px;
+  width: 150px;
+  color: green;
 }

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Results from "./Results";
 
 const Questions = (props) => {
-  const {level}=props;
+  const {level,topic}=props;
   const [questions,setQuestions]=useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [qcount, setqcount] = useState(0);
@@ -19,7 +19,7 @@ const Questions = (props) => {
   
   const handleViewClick = async () => {
           try {
-            const response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple&difficulty=${level}`);
+            const response = await fetch(`https://opentdb.com/api.php?amount=10&type=multiple&difficulty=${level}&category=${topic}`);
             const fetchedData = await response.json();
             setQuestions(fetchedData.results);
             console.log(fetchedData.results)
@@ -45,19 +45,18 @@ const Questions = (props) => {
 
     if(resultStatus){
       return(
-    <Results score={score} level={level}/>
+    <Results score={score} level={level} topic={topic}/>
       )
     }
 
     if(questions){
             return(
             <div className="quiz">
+            <p className="difficulty"> {questions[qcount].difficulty}</p>
             <h3>Score:{score}</h3>
             <h1>Category: {questions[qcount].category}</h1>
-            <h1>Difficulty Level: {questions[qcount].difficulty}</h1>
             <div className="question"><h3>{qcount+1}. {questions[qcount].question}</h3></div>
             <div className="options">
-
             <button onClick={handleCheck} className={`${selectedAnswer === questions[qcount].incorrect_answers[0]? (selectedAnswer === questions[qcount].correct_answer ? "correct" : "incorrect") : ""}`} value={questions[qcount].incorrect_answers[0]}>
               <p>{questions.length && questions[qcount].incorrect_answers[0]}</p>
             </button>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Questions from "./Questions";
 
 const Results = (props) => {
-    const {score,level}=props;
+    const {score,level,topic}=props;
     const [difficulty, setDifficulty] = useState(level)
     const [again, setAgain] = useState(false)
 
@@ -13,7 +13,7 @@ const Results = (props) => {
 
     if(again){
         return( 
-        <Questions level={difficulty}/>
+        <Questions level={difficulty} topic={topic}/>
         )
         }
 
